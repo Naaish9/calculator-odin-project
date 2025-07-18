@@ -21,3 +21,25 @@ function operate(operator, n1, n2) {
     divide(n1, n2);
   }
 }
+
+let digitBtns = document.querySelectorAll(".digit");
+let clearBtn = document.querySelector(".clear");
+let display = document.querySelector(".p-display");
+
+function updateDisplay(btn) {
+  if (op1 === 0) {
+    op1 = btn.textContent;
+  } else {
+    op1 += btn.textContent;
+  }
+  display.innerHTML = op1;
+}
+
+digitBtns.forEach((btn) =>
+  btn.addEventListener("click", () => updateDisplay(btn))
+);
+
+clearBtn.addEventListener("click", () => {
+  display.innerHTML = null;
+  op1 = 0;
+});
